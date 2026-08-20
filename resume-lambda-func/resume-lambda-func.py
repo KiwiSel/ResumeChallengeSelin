@@ -4,7 +4,6 @@ dynamodb = boto3.resource("dynamodb")
 table = dynamodb.Table("ResumeTable")
 
 
-# test comment
 def lambda_handler(event, context):
     response = table.update_item(
         Key={
