@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy Lambda
         run: |
-          zip -j lambda.zip lambda_function.py
+          zip -j lambda.zip resume-lambda-func/resume-lambda-func.py
           aws lambda update-function-code \
             --function-name resume-lambda-func \
             --zip-file fileb://lambda.zip
