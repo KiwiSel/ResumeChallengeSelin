@@ -17,6 +17,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Debug OIDC
+        uses: github/actions-oidc-debugger@main
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -25,7 +28,7 @@ jobs:
 
       - name: Deploy Lambda
         run: |
-          zip -j lambda.zip resume-lambda-func.py
+          zip -j lambda.zip lambda_function.py
           aws lambda update-function-code \
             --function-name resume-lambda-func \
             --zip-file fileb://lambda.zip
